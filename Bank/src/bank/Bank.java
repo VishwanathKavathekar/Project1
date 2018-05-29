@@ -54,7 +54,7 @@ public class Bank {
         System.out.println("***WElCOME***");
         for(i=0;i<5;i++)
         {
-            BANK b[i]= new BANK();
+            BANK b[]= new BANK[i];
         }
         
        
@@ -68,9 +68,9 @@ public class Bank {
             
             switch(ch)
             {
-                case 1: no= b.CreateAccount();
+                case 1: no= b[i].CreateAccount();
                         break;
-                case 2: b.Deposit_amt();
+                case 2: b[i].Deposit_amt();
             }
         }
         
