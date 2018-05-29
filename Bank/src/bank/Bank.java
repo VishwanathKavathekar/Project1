@@ -1,22 +1,81 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package bank;
+import java.util.*;
+class BANK
+{
+    int person=101,acc,tot_bal,dep_amt;
+    String name;
+    Scanner s=new Scanner(System.in);
+       int CreateAccount()
+    {
+        System.out.println("Enter the name ");
+        name= s.next();
+        System.out.println("Your Account no is"+person);
+        person++;
+        return person;
+        
+    }
+    
+    void Deposit_amt()
+    {
+        System.out.println("Enter your Account no");
+        acc=s.nextInt();
+        if(acc==person)         //validation
+        {
+            System.out.println("Enter your amount");
+            dep_amt=s.nextInt();
+            
+            
+        }
+        else
+        {
+            System.out.println("Your Account no is INVAlID !!");
+        }
+    }
+    void Withdraw_amt()
+    {
+        
+    }
+    void Transfer()
+    {
+        
+    }
+    void Balance_info()
+    {
+        
+    }
+}
 
-/**
- *
- * @author Vishwanath
- */
 public class Bank {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+               
+    public static void main(String[] args) 
+    {
+        int ch,no,i;
+        System.out.println("***WElCOME***");
+        for(i=0;i<5;i++)
+        {
+            BANK b[i]= new BANK();
+        }
+        
+       
+        Scanner a= new Scanner(System.in);
+        
+        do
+        {
+            System.out.println("1.Creating account 2.Depositing amount 3.Withdrawing amount 4.Transfering account 5.Display Balance");
+            System.out.println("Enter a choice");
+            ch=a.nextInt();
+            
+            switch(ch)
+            {
+                case 1: no= b.CreateAccount();
+                        break;
+                case 2: b.Deposit_amt();
+            }
+        }
+        
+        
+        
     }
     
 }
