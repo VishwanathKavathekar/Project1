@@ -1,34 +1,43 @@
 package bank;
 
 import java.util.*;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.lang.IndexOutOfBoundsException;
 
 /**
- *
+ *This program illustrates working of banking application
+ * This program gives functionalities like add account,deposit ,withdrawal,Displaying the account
  * @author Vishwanath
  */
 class Bank_application {
-
-    int acc, dep_amt;
+;
+    int acc, dep_amt,with_amt;
     static ArrayList<Account> arr = new ArrayList();
     int tot_bal;
     int count = 100;
-    String name;
+    String name,name2;
     Scanner s = new Scanner(System.in);
-
+    Account ac;
+    /**
+     * This method creates multiple accounts
+     * @param name User enters a input which is being passed in the add_account function
+     * @param count Gives the user an unique account no which increments after every new account is created
+     */
     void add_account(String name) {
-        Account ac = new Account();
-        ac.name = name;
-        arr.add(ac);
-        System.out.println("Your account no is " + count++);
+        Account obj1 = new Account();
+        obj1.name = name;
+          arr.add(obj1);
+        System.out.println("Your account no is " +count);
+        count++;
     }
-
-    void Deposit_amt() {
-        System.out.println("Enter your Account no");
-        acc = s.nextInt();
-        if (arr.get(acc).name != null) //validation
+    /**
+     * This method lets the users deposit money in their respective accounts 
+     * @param acc User enters a account no which is being passed for validation 
+     * @param tot_bal The total balance of each user is present 
+     */
+    void Deposit_amt(int acc) {
+      
+        
+        if (acc<count &&arr.get(acc).name!=null ) //validation
         {
             System.out.println("Enter your amount");
             dep_amt = s.nextInt();
@@ -38,26 +47,31 @@ class Bank_application {
             System.out.println("Your Account no is INVAlID !!");
         }
     }
-
+/**
+ * This method lets the users to withdraw an amount from their existing balance and makes the necessary changes to their total balance
+ * @param with_amt contains the amount the user wants to withdraw
+ * 
+*/
+    
     void Withdraw_amt() {
         System.out.println("Enter your Account no");
         acc = s.nextInt();
         while (arr.get(acc).name != null) {
             System.out.println("Enter the amount you want to deposit");
-            dep_amt = s.nextInt();
-            if (dep_amt > arr.get(acc).tot_bal) {
+            with_amt = s.nextInt();
+            if (with_amt > arr.get(acc).tot_bal) {
                 System.out.println("You do not have enough balance");
             } else {
-                arr.get(acc).tot_bal -= dep_amt;
+                arr.get(acc).tot_bal -= with_amt;
             }
         }
         System.out.println("Wrong acc no");
     }
 
-    void Transfer() {
-
-    }
-
+  
+/**
+ * This method displays the the total balance of an individual
+ */
     void Balance_info() {
         System.out.println("Enter your Account no");
         acc = s.nextInt();
@@ -84,7 +98,7 @@ public class Bank {
         do {
             System.out.println("1.Creating account 2.Depositing amount 3.Withdrawing amount 4.Transfering account 5.Display Balance");
             System.out.println("Enter a choice");
-            ch = a.nextInt();
+             ch = a.nextInt();
             flag = no;
             switch (ch) {
                 case 1:
@@ -94,10 +108,11 @@ public class Bank {
 
                     break;
                 case 2:
-                    b.Deposit_amt();
+                      System.out.println("Enter your Account no");
+                      int accountno1=a.nextInt();
+                    b.Deposit_amt(accountno1);
                     break;
-                case 3:
-                    b.Withdraw_amt();
+                case 3: b.Withdraw_amt();
                     break;
                 case 4:
                     b.Balance_info();
